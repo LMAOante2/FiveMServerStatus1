@@ -1,68 +1,100 @@
-<!doctype html>
-<html lang="sr">
+<!DOCTYPE html>
+<html oncontextmenu="return false" lang="hr">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stojka Creator Program — SCP</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/ecbdcf2a50.js" crossorigin="anonymous"></script>
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check Every Fivem Server Status">
+    <meta name="keywords" content="FiveM Server Status">
+    <meta name="author" content="FiveM Server Status">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="HGvKcQ3b0bT5SE0yGNMlDwvYMaLh_PgTC2DnKvqywRo" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>FiveM Server Status</title>
+    <link rel="stylesheet" href="status.css">
+    <link rel="icon" href="slike/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="slike/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="slike/android-chrome-192x192.png" sizes="96x96" type="image/png">
+    <style>
+
+    </style>
 </head>
-<body>
-  <div class="hero">
-    <div class="hero-text">
-      <h2>Stojka Creator Program (SCP)</h2>
-      <p>Tvoja kreativnost. Naša platforma. Prava zarada u Fortnite svetu.</p>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MYWVBW0EFL"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MYWVBW0EFL');
+</script>
+
+<body onkeydown="zatvoriesc()" oncontextmenu="return false">
+
+    <input type="checkbox" id="menutoggle">
+    <label for="menutoggle" class="menutoggle-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav>
+        <div class="title">FiveM Server Status</div>
+    </nav>
+
+
+    <div style="text-align: center; margin-top: 20px;">
+        <input type="text" id="searchInput1" placeholder="Server ID (E.g. vz34af)" onkeydown="igracIme()">
+        <hr class="pretrazi1">
     </div>
-  </div>
 
-  <header>
-    <h1>Zarada kroz Fortnite — jednostavno i transparentno</h1>
-    <p>Dobrodošli u Stojka Creator Program — prostor za sve koji žele da kreiraju Fortnite sadržaj i budu nagrađeni za svoj trud.</p>
-  </header>
+    <div class="rules-container">
+        <div class="rule">
+            <h3><span id="serverName">Loading...</span></h3>
+            <hr style="margin-bottom: 20px; margin-top: 10px;">
+            <h3>Players: <span id="player-count">Loading...</span></h3>
+            <h3 id="server-status">
+                <span class="pulse" style="background: orange;"></span>Loading...
+            </h3>
+            <div>
+                <button id="refresh" onclick="refresh()" class="refresh">
+                    <i class="fas fa-refresh icon"></i>
+                    <span>Refresh</span>
+                </button>
+            </div>
+            <h4 style="color: red;" id="tekst">Automatic refresh</h4>
+            <label class="switch">
+                <input type="checkbox" id="toggleMonitor">
+                <span class="slider"><i class="fas fa-refresh refreshslider"></i></span>
+            </label>
 
-  <section class="section">
-    <h3>Kako funkcioniše?</h3>
-    <div class="card">
-      <ul class="small">
-        <li>Kreiraj zabavne video sadržaje i objavi ih na TikTok, YouTube, YouTube Shorts ili Instagram Reels.</li>
-        <li>Ne objavljuj isti video na više naloga — duplikati se ne priznaju.</li>
-        <li>Video mora biti na stranom jeziku (npr. engleski, nemački, francuski).</li>
-        <li>Isplate su mesečne, na osnovu ukupnog broja pregleda.</li>
-        <li>Minimalno za isplatu: <strong>100.000 pregleda mesečno</strong>.</li>
-      </ul>
+
+
+        </div>
     </div>
-  </section>
 
-  <section class="section sakriven">
-    <h3>Pregledi i zarada</h3>
-    <div class="card payouts">
-      <table>
-        <thead>
-          <tr><th>Pregledi</th><th>Isplata (USD)</th><th>Isplata (V-Bucks)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>100.000</td><td>$37</td><td>5.000 V-Bucks</td></tr>
-          <tr><td>500.000</td><td>$90</td><td>13.500 V-Bucks</td></tr>
-          <tr><td>1.000.000</td><td>$200</td><td>30.000 V-Bucks</td></tr>
-        </tbody>
-      </table>
-      <p class="small" style="margin-top:10px">Isplate se vrše mesečno na osnovu ukupnog broja validnih pregleda u tom mesecu. Pregledi se broje sa TikTok-a, YouTube-a, YouTube Shorts-a i Instagram Reels-a.</p>
+
+    <div id="igraci" class="rules-container1">
+
+        <div id="cijelo" class="cijelo">
+            <div style="display: none;" id="kopirano" class="kopirano">
+                <h3 id="ime"></h3>
+                <button onclick="zatvori()">Close</button>
+            </div>
+        </div>
+        <input type="text" id="searchInput" placeholder="Search Player (BETA)" onkeydown="igracIme()">
+        <hr class="pretrazi">
+        <div id="igraclista">Loading...</div>
     </div>
-  </section>
 
-  <section class="section sakriven1">
-    <h3>Pravila i napomene</h3>
-    <div class="card small">
-      <p><strong>Važno:</strong> Objavljivanje istih videa na više naloga nije dozvoljeno. Zarada se računa samo za sadržaje na stranom jeziku.</p>
-      <p style="margin-top:10px">Ovo nije sponzorisano, podržano niti organizovano od strane Epic Games-a. Program počinje <strong>1. novembra</strong>.</p>
-    </div>
-  </section>
+    <footer>
+        <span><a href="tutorial.html">Tutorial</a></span>
+    </footer>
 
-  <footer>
-    © <span id="year"></span> Stojka Creator Program — Ovo nije sponzorisano, podržano niti organizovano od strane Epic Games-a.
-      <span class="icons"><a target="_blank" href="https://www.facebook.com/StojkaFN"><i class="fa-brands fa-square-facebook" style="color: #005eff;"></i></a><a target="_blank" href="https://www.instagram.com/stojkaafn/"><i class="fa-brands fa-instagram" style="color: #ff00ae;"></i></a><a target="_blank" href="https://x.com/stojkaafnn"><i class="fa-brands fa-square-twitter" style="color: #74C0FC;"></i></a><a target="_blank" href="https://www.youtube.com/@stojkafn"><i class="fa-brands fa-square-youtube" style="color: #ff0000;"></i></a></span>
-  </footer>
+
 </body>
-<script src="script.js"></script>
+<script src="status.js"></script>
+
 </html>
